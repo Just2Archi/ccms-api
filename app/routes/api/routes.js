@@ -8,7 +8,7 @@ module.exports = function(app, db) {
   // Login Route
 
   app.post('/api/login', function(req, res) {
-    User.findOne({ name: req.body.username }, function(err, user) {
+    User.findOne({ username: req.body.username }, function(err, user) {
       console.log('Ivestas username: ', req.body.username)
       console.log('Ivestas pswrd: ', req.body.password)
       if (err) throw err
