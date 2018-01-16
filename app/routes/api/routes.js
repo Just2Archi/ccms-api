@@ -45,7 +45,7 @@ module.exports = function(app, db) {
   // Route middleware to verify a token
   app.use(function(req, res, next) {
 
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+    var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authorization;
 
     if (token) {
       jwt.verify(token, app.get('superSecret'), function(err, decoded) {
@@ -75,6 +75,10 @@ module.exports = function(app, db) {
     User.find({}, function(err, users) {
       res.json(users);
     });
+  });
+
+  app.get('/api/logout', function(req, res) {
+    res.json({ message: 'Sėkmingai atsijungėte' });
   });
 
 };
