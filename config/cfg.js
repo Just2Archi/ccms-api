@@ -1,4 +1,4 @@
 module.exports = {
   secret: 'lrytasclimatecms',
-  database : 'mongodb://localhost:27017'
+  database : 'mongodb://admin:admin@ds159187.mlab.com:59187/heroku_p04hc35j'
 }
