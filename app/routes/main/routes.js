@@ -12,8 +12,8 @@ module.exports = function(app, db) {
 
     // Create a sample user
     var nick = new User({
-      username: 'admin',
-      password: 'admin1',
+      username: 'rytis',
+      password: 'rytis',
       admin: true
     });
 

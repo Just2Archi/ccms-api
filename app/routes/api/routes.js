@@ -77,6 +77,13 @@ module.exports = function(app, db) {
     });
   });
 
+  // List One user by username
+  app.get('/api/user', function(req, res) {
+    User.findOne({ username: req.body.username }, function(err, user) {
+      res.json(user);
+    });
+  });
+
   app.get('/api/logout', function(req, res) {
     res.json({ message: 'Sėkmingai atsijungėte' });
   });
