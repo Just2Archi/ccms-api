@@ -13,12 +13,12 @@ module.exports = function(app, db) {
       console.log('Ivestas pswrd: ', req.body.password)
       if (err) throw err
       if (!user) {
-        res.json({ success: false, message: 'Prisijungti nepavyko. Vartotojas nerastas.' })
+        res.json({ success: false, message: 'Vartotojas nerastas.' })
       } else if (user) {
         if (user.password != req.body.password) {
           res.json({
             success: false,
-            message: 'Prisijungti nepavyko. Neteisingai įvestas slaptažodis.'
+            message: 'Neteisingai įvestas slaptažodis.'
           })
         } else {
           const payload = {
