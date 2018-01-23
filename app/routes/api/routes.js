@@ -40,7 +40,7 @@ module.exports = function(app, db) {
       }
 
     })
-  })
+  });
 
   // Route middleware to verify a token
   app.use(function(req, res, next) {
@@ -50,7 +50,7 @@ module.exports = function(app, db) {
     if (token) {
       jwt.verify(token, app.get('superSecret'), function(err, decoded) {
         if (err) {
-          return res.json({ success: false, message: 'Failed to authenticate token.' });
+          throw err
         } else {
           req.decoded = decoded;
           next();
@@ -63,7 +63,7 @@ module.exports = function(app, db) {
       });
     }
 
-  })
+  });
 
   // Basic Home Route
   app.get('/api/', function(req, res) {
@@ -79,7 +79,7 @@ module.exports = function(app, db) {
 
   // List One user by username
   app.get('/api/user', function(req, res) {
-    User.findOne({ username: req.body.username }, function(err, user) {
+    User.findOne({ username: req.query.username }, function(err, user) {
       res.json(user);
     });
   });
